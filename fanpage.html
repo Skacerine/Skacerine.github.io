@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Belieber Hub · Vanilla JS Showcase</title>
+  <meta name="description" content="A Justin Bieber fan page built with only HTML, CSS, and JavaScript — showcasing vanilla features and effects." />
+  <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+  <div class="progress" id="progress"></div>
+  <header>
+    <div class="container nav">
+      <div class="logo"><span class="dot"></span><span>Belieber Hub</span></div>
+      <div class="actions">
+        <button id="themeToggle" class="btn ghost" aria-pressed="false">Toggle Theme</button>
+        <a class="btn" href="#gallery">Gallery</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO SLIDESHOW -->
+    <section class="container">
+      <div class="section-head"><h2>Justin Bieber — Photo Reel</h2><p>Vanilla JS slideshow with controls</p></div>
+      <div class="slideshow" id="slideshow">
+        <img class="slides" src="Images/justin1_720.jpg" alt="Blue shirt portrait" draggable="false">
+        <img class="slides" src="Images/justin2_720.jpg" alt="Bench pose" draggable="false">
+        <img class="slides" src="Images/justin3_720.jpg" alt="White tee portrait" draggable="false">
+        <button class="btn control-left" id="prev">⟨ Prev</button>
+        <button class="btn control-right" id="next">Next ⟩</button>
+        <div class="controls">
+          <span class="badge" id="status">Autoplay: On</span>
+          <button class="btn" id="toggle">Pause</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- GALLERY + FILTER + DRAG -->
+    <section id="gallery" class="container">
+      <div class="section-head"><h2>Gallery</h2><p>Filter, drag to reorder, click to open</p></div>
+      <div class="toolbar">
+        <input id="filter" placeholder="Search (e.g. bench, portrait)" aria-label="Filter images" />
+        <button id="shuffle" class="btn">Shuffle</button>
+        <span class="badge">Drag & drop to reorder</span>
+      </div>
+      <div class="grid" id="grid">
+        <figure draggable="true"><img src="Images/justin1_720.jpg" alt="portrait blue shirt"><figcaption>Blue shirt</figcaption></figure>
+        <figure draggable="true"><img src="Images/justin2_720.jpg" alt="bench black outfit"><figcaption>Bench</figcaption></figure>
+        <figure draggable="true"><img src="Images/justin3_720.jpg" alt="portrait white tee"><figcaption>White tee</figcaption></figure>
+        <figure draggable="true"><img src="Images/justin4_720.jpg" alt="stage performance"><figcaption>Stage</figcaption></figure>
+        <figure draggable="true"><img src="Images/justin5_720.jpg" alt="studio vibe"><figcaption>Studio</figcaption></figure>
+        <figure draggable="true"><img src="Images/justin6_720.jpg" alt="candid"><figcaption>Candid</figcaption></figure>
+      </div>
+      <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Image viewer">
+        <img id="lightboxImg" alt="Expanded gallery item" />
+      </div>
+    </section>
+
+    <!-- TOP SONGS (YouTube embeds) -->
+<section class="container" id="top-songs">
+  <div class="section-head">
+    <h2>Top Songs</h2>
+    <p>Official videos embedded via YouTube (privacy-enhanced mode)</p>
+  </div>
+
+  <div class="videos grid">
+    <article class="video-card reveal">
+      <header>Sorry</header>
+      <div class="video-embed">
+        <iframe
+          src="https://www.youtube-nocookie.com/embed/fRh_vgS2dFE"
+          title="Justin Bieber - Sorry (Official)"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      </div>
+    </article>
+
+    <article class="video-card reveal">
+      <header>Love Yourself</header>
+      <div class="video-embed">
+        <iframe
+          src="https://www.youtube-nocookie.com/embed/oyEuk8j8imI"
+          title="Justin Bieber - Love Yourself (Official)"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      </div>
+    </article>
+
+    <article class="video-card reveal">
+      <header>What Do You Mean?</header>
+      <div class="video-embed">
+        <iframe
+          src="https://www.youtube-nocookie.com/embed/DK_0jXPuIr0"
+          title="Justin Bieber - What Do You Mean? (Official)"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      </div>
+    </article>
+
+    <article class="video-card reveal">
+      <header>Peaches (feat. Daniel Caesar & Giveon)</header>
+      <div class="video-embed">
+        <iframe
+          src="https://www.youtube-nocookie.com/embed/tQ0yjYUFKAE"
+          title="Justin Bieber - Peaches (Official)"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      </div>
+    </article>
+
+    <article class="video-card reveal">
+      <header>Ghost</header>
+      <div class="video-embed">
+        <iframe
+          src="https://www.youtube-nocookie.com/embed/Fp8msa5uYsc"
+          title="Justin Bieber - Ghost (Official)"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- MINI POLL -->
+<section class="container" id="poll">
+  <div class="section-head">
+    <h2>Vote: Favourite Song</h2>
+    <p>Pick your fave and see live results (stored locally)</p>
+  </div>
+
+  <div class="poll card">
+    <div role="group" aria-labelledby="poll-label">
+      <div id="poll-label" class="badge" style="margin-bottom:8px">One vote per device</div>
+
+      <label class="option"><input type="radio" name="song" value="Sorry"> Sorry</label>
+      <label class="option"><input type="radio" name="song" value="Love Yourself"> Love Yourself</label>
+      <label class="option"><input type="radio" name="song" value="What Do You Mean?"> What Do You Mean?</label>
+      <label class="option"><input type="radio" name="song" value="Peaches"> Peaches</label>
+      <label class="option"><input type="radio" name="song" value="Ghost"> Ghost</label>
+    </div>
+
+    <div class="actions">
+      <button id="voteBtn" class="btn">Submit Vote</button>
+      <button id="resetBtn" class="btn ghost" title="Clears your local vote only">Reset My Vote</button>
+      <span id="pollMsg" class="badge" aria-live="polite"></span>
+    </div>
+
+    <div class="results" id="results"></div>
+  </div>
+</section>
+
+  
+  </main>
+
+  <button class="btn to-top" id="toTop" aria-label="Back to top">↑ Top</button>
+
+  <footer class="container footer-meta">
+    © <span id="year"></span> Belieber Hub — fan-made site
+  </footer>
+
+  <script>
+    // ====== Theme Toggle with localStorage ======
+    const root = document.documentElement;
+    const themeToggle = document.getElementById('themeToggle');
+    const savedTheme = localStorage.getItem('theme');
+    if(savedTheme){ root.setAttribute('data-theme', savedTheme); themeToggle.setAttribute('aria-pressed', savedTheme==='light'); }
+    themeToggle.addEventListener('click', ()=>{
+      const current = root.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+      root.setAttribute('data-theme', current);
+      localStorage.setItem('theme', current);
+      themeToggle.setAttribute('aria-pressed', current==='light');
+    });
+
+    // ====== Scroll progress bar ======
+    const progress = document.getElementById('progress');
+    const setProgress = ()=>{
+      const h = document.documentElement;
+      const scrolled = (h.scrollTop)/(h.scrollHeight - h.clientHeight);
+      progress.style.transform = `scaleX(${scrolled})`;
+    };
+    document.addEventListener('scroll', setProgress, {passive:true}); setProgress();
+
+    // ====== Slideshow (autoplay + controls) ======
+    let idx = 0, timer, autoplay = true;
+    const slides = Array.from(document.querySelectorAll('.slides'));
+    const show = (i)=>{ slides.forEach(s=>s.style.display='none'); slides[i].style.display='block'; };
+    const next = ()=>{ idx = (idx+1)%slides.length; show(idx); };
+    const prev = ()=>{ idx = (idx-1+slides.length)%slides.length; show(idx); };
+    const start = ()=>{ timer = setInterval(next, 4000); document.getElementById('status').textContent='Autoplay: On'; };
+    const stop = ()=>{ clearInterval(timer); document.getElementById('status').textContent='Autoplay: Off'; };
+    document.getElementById('next').onclick = ()=>{ stop(); autoplay=false; next(); };
+    document.getElementById('prev').onclick = ()=>{ stop(); autoplay=false; prev(); };
+    document.getElementById('toggle').onclick = ()=>{ autoplay=!autoplay; autoplay?start():stop(); document.getElementById('toggle').textContent = autoplay? 'Pause' : 'Play'; };
+    show(idx); start();
+
+    // ====== Gallery filter ======
+    const filter = document.getElementById('filter');
+    const grid = document.getElementById('grid');
+    filter.addEventListener('input', ()=>{
+      const q = filter.value.toLowerCase();
+      grid.querySelectorAll('figure').forEach(fig=>{
+        const hay = (fig.querySelector('img').alt + ' ' + fig.querySelector('figcaption').textContent).toLowerCase();
+        fig.style.display = hay.includes(q) ? '' : 'none';
+      })
+    });
+
+    // ====== Gallery drag & drop reorder ======
+    let dragSrc;
+    grid.addEventListener('dragstart', e=>{ const f = e.target.closest('figure'); if(!f) return; dragSrc=f; f.style.opacity='.5'; });
+    grid.addEventListener('dragend', e=>{ const f = e.target.closest('figure'); if(f) f.style.opacity=''; });
+    grid.addEventListener('dragover', e=>{ e.preventDefault(); });
+    grid.addEventListener('drop', e=>{
+      e.preventDefault(); const dest = e.target.closest('figure'); if(!dragSrc || !dest || dragSrc===dest) return;
+      const children = Array.from(grid.children);
+      const srcIndex = children.indexOf(dragSrc); const destIndex = children.indexOf(dest);
+      if(srcIndex < destIndex){ grid.insertBefore(dragSrc, dest.nextSibling); } else { grid.insertBefore(dragSrc, dest); }
+    });
+    document.getElementById('shuffle').addEventListener('click', ()=>{
+      const figs = Array.from(grid.children); figs.sort(()=>Math.random()-0.5).forEach(f=>grid.appendChild(f));
+    });
+
+    // ====== Lightbox with keyboard support ======
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightboxImg');
+    grid.addEventListener('click', (e)=>{
+      const img = e.target.closest('img'); if(!img) return;
+      lightboxImg.src = img.src; lightbox.classList.add('open'); lightbox.focus();
+    });
+    lightbox.addEventListener('click', (e)=>{ if(e.target===lightbox) lightbox.classList.remove('open'); });
+    document.addEventListener('keydown', (e)=>{ if(e.key==='Escape') lightbox.classList.remove('open'); });
+
+    document.querySelectorAll('#top-songs .video-card, #poll .card, #poll .option')
+    .forEach(el => el.classList.add('reveal'));
+
+    // Safety if anything else fails:
+    document.querySelectorAll('.reveal').forEach(el => el.classList.add('visible'));
+    // ====== Scroll reveal ======
+    const revealEls = document.querySelectorAll('.card, .section-head, .slideshow, .grid figure');
+    revealEls.forEach(el => el.classList.add('reveal'));
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('visible'); io.unobserve(e.target);} });
+    }, {threshold: 0.2});
+    revealEls.forEach(el=> io.observe(el));
+
+    // ====== Back to top ======
+    const toTop = document.getElementById('toTop');
+    window.addEventListener('scroll', ()=>{
+      toTop.classList.toggle('visible', window.scrollY > 600);
+    }, {passive:true});
+    toTop.addEventListener('click', ()=> window.scrollTo({top:0, behavior:'smooth'}));
+
+    // Footer year
+    document.getElementById('year').textContent = new Date().getFullYear();
+    // === Poll (client-side, localStorage) ===
+const SONGS = ["Sorry","Love Yourself","What Do You Mean?","Peaches","Ghost"];
+const POLL_KEY_COUNTS = "belieber_poll_counts_v1";
+const POLL_KEY_VOTE = "belieber_poll_myvote_v1";
+
+const resultsEl = document.getElementById('results');
+const voteBtn = document.getElementById('voteBtn');
+const resetBtn = document.getElementById('resetBtn');
+const pollMsg = document.getElementById('pollMsg');
+
+function loadCounts(){
+  try{
+    const raw = localStorage.getItem(POLL_KEY_COUNTS);
+    if(raw) return JSON.parse(raw);
+  }catch{}
+  // default zeroes
+  const obj = {}; SONGS.forEach(s=>obj[s]=0); return obj;
+}
+function saveCounts(counts){ localStorage.setItem(POLL_KEY_COUNTS, JSON.stringify(counts)); }
+
+function loadMyVote(){ return localStorage.getItem(POLL_KEY_VOTE); }
+function saveMyVote(v){ localStorage.setItem(POLL_KEY_VOTE, v); }
+
+function renderResults(){
+  const counts = loadCounts();
+  const total = Object.values(counts).reduce((a,b)=>a+b,0) || 1;
+  resultsEl.innerHTML = '';
+  SONGS.forEach(s=>{
+    const n = counts[s] || 0;
+    const pct = Math.round((n/total)*100);
+    const row = document.createElement('div');
+    row.className = 'result-row';
+    row.innerHTML = `
+      <div>${s}</div>
+      <div class="bar" aria-label="${s} ${pct}%">
+        <div class="fill" style="width:${pct}%"></div>
+      </div>
+      <div>${n} (${pct}%)</div>
+    `;
+    resultsEl.appendChild(row);
+  });
+}
+
+  voteBtn.addEventListener('click', ()=>{
+    const chosen = document.querySelector('input[name="song"]:checked');
+    if(!chosen){ pollMsg.textContent = "Pick a song first 😊"; return; }
+
+    const myVote = loadMyVote();
+    const counts = loadCounts();
+
+    // If voting again for the same option, just acknowledge
+    if(myVote === chosen.value){
+      pollMsg.textContent = "You’ve already voted for this 💜";
+      return;
+    }
+
+    // If switching vote, decrement old and increment new
+    if(myVote && counts[myVote] > 0){ counts[myVote]--; }
+    counts[chosen.value] = (counts[chosen.value] || 0) + 1;
+
+    saveCounts(counts);
+    saveMyVote(chosen.value);
+    pollMsg.textContent = `Voted: ${chosen.value}!`;
+    renderResults();
+  });
+
+  resetBtn.addEventListener('click', ()=>{
+    const myVote = loadMyVote();
+    if(!myVote){ pollMsg.textContent = "No vote to reset."; return; }
+    const counts = loadCounts();
+    if(counts[myVote] > 0) counts[myVote]--;
+    saveCounts(counts);
+    localStorage.removeItem(POLL_KEY_VOTE);
+    pollMsg.textContent = "Your local vote is cleared.";
+    // Also clear radio selection
+    document.querySelectorAll('input[name="song"]').forEach(r=> r.checked = false);
+    renderResults();
+  });
+
+  // First render
+  renderResults();
+
+  // Extend your existing reveal observer to include new elements (safety net)
+  document.querySelectorAll('#top-songs .video-card, #poll .card, #poll .option').forEach(el=>{
+    el.classList.add('reveal');
+  });
+  </script>
+</body>
+</html>

@@ -1,0 +1,180 @@
+
+:root{
+    --bg: #0b0c11;
+    --fg: #f7f8fc;
+    --muted:#a5adbf;
+    --brand:#ff4d6d;
+    --brand-2:#7b5cff;
+    --card:#151826;
+    --border:#22283c;
+    --radius:18px;
+    --shadow:0 14px 40px rgba(0,0,0,.40);
+}
+[data-theme="light"]{
+    --bg:#f6f7fb; --fg:#10121a; --muted:#5a6173; --card:#ffffff; --border:#e7e9f0;
+    background: radial-gradient(1200px 600px at 20% -10%, rgba(123,92,255,.12), transparent 60%),
+                radial-gradient(800px 500px at 120% 10%, rgba(255,77,109,.10), transparent 60%);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0; font:16px/1.6 system-ui, -apple-system, Segoe UI, Roboto, Arial; color:var(--fg); background:var(--bg)}
+a{color:inherit; text-decoration:none}
+img{max-width:100%; display:block}
+.container{max-width:1100px; margin-inline:auto; padding: clamp(16px, 2.5vw, 28px)}
+/* THEME-AWARE CONTROL STYLES — add this */
+button, input, select, textarea {
+    color: var(--fg);
+    background: var(--card);
+    border-color: var(--border);
+}
+
+/* Your primary button class should also force text color */
+.btn { 
+    color: var(--fg);
+    background: var(--card);
+    border: 1px solid var(--border);
+}
+
+/* Ghost buttons keep transparent bg but still get theme text/border */
+.btn.ghost {
+    color: var(--fg);
+    background: transparent;
+    border-color: var(--border);
+}
+
+/* Slideshow overlay buttons inherit too */
+.control-left.btn,
+.control-right.btn {
+    color: var(--fg);
+}
+
+/* Inputs & placeholders theme nicely */
+.toolbar input {
+    color: var(--fg);
+    background: transparent;
+    border-color: var(--border);
+}
+.toolbar input::placeholder { color: var(--muted); }
+
+/* Select & dropdown options (some browsers need this) */
+select.btn {
+    color: var(--fg);
+    background: var(--card);
+    border-color: var(--border);
+}
+select.btn option {
+    color: var(--fg);
+    background: var(--card);
+}
+
+/* Badge text should adapt in light theme for contrast */
+.badge {
+    color: var(--fg);
+    background: rgba(0,0,0,.35);
+}
+[data-theme="light"] .badge {
+    background: rgba(0,0,0,.08);
+}
+
+
+/* Progress bar */
+.progress{position:fixed; inset:0 0 auto 0; height:4px; background:linear-gradient(90deg,var(--brand),var(--brand-2)); transform-origin:0 50%; transform:scaleX(0); z-index:9999}
+
+/* Header */
+header{position:sticky; top:0; z-index:1000; backdrop-filter:saturate(1.2) blur(10px); background:rgba(11,12,17,.6); border-bottom:1px solid var(--border)}
+[data-theme="light"] header{background:rgba(255,255,255,.7)}
+.nav{display:flex; align-items:center; justify-content:space-between; gap:16px}
+.logo{display:flex; align-items:center; gap:10px; font-weight:800}
+.logo .dot{width:10px; height:10px; border-radius:50%; background:linear-gradient(135deg,var(--brand),var(--brand-2))}
+.actions{display:flex; gap:10px; align-items:center}
+.btn{display:inline-flex; align-items:center; gap:8px; padding:10px 14px; border-radius:12px; border:1px solid var(--border); background:var(--card); box-shadow:var(--shadow); cursor:pointer; transition:.2s}
+.btn:hover{transform:translateY(-2px)}
+.btn.ghost{background:transparent}
+
+/* Hero slideshow */
+.slideshow{position:relative; border-radius:var(--radius); overflow:hidden; border:1px solid var(--border); box-shadow:var(--shadow)}
+.slides{display:none; width:100%; aspect-ratio: 16/9; object-fit:cover}
+.controls{position:absolute; inset:auto 12px 12px 12px; display:flex; gap:8px; justify-content:space-between}
+.control-left{position:absolute; left:10px; top:50%; translate:0 -50%}
+.control-right{position:absolute; right:10px; top:50%; translate:0 -50%}
+.badge{display:inline-block; padding:6px 10px; border-radius:999px; font-size:12px; border:1px solid var(--border); background:rgba(0,0,0,.35); color:#fff}
+
+/* Sections */
+section{margin-block: clamp(28px, 6vw, 72px)}
+.section-head{display:flex; align-items:end; justify-content:space-between; gap:16px; margin-bottom:16px}
+.section-head h2{margin:0; font-size: clamp(22px, 3.5vw, 34px)}
+.section-head p{margin:0; color:var(--muted)}
+.card{background:var(--card); border:1px solid var(--border); border-radius:var(--radius); box-shadow:var(--shadow); padding:18px}
+
+/* Gallery */
+.toolbar{display:flex; gap:10px; align-items:center; margin-bottom:12px}
+.toolbar input{padding:10px 12px; border-radius:10px; border:1px solid var(--border); background:transparent; color:var(--fg)}
+.grid{display:grid; grid-template-columns: repeat(3, 1fr); gap:10px}
+.grid figure{margin:0; border-radius:14px; overflow:hidden; border:1px solid var(--border); cursor:zoom-in; position:relative}
+.grid figcaption{position:absolute; left:10px; bottom:10px; background:rgba(0,0,0,.45); color:#fff; padding:4px 8px; border-radius:10px; font-size:12px}
+.grid figure{transition:transform .25s ease}
+.grid figure:hover{transform:translateY(-3px)}
+.grid figure img{transition:transform .35s ease}
+.grid figure:hover img{transform:scale(1.06)}
+
+/* Lightbox */
+.lightbox{position:fixed; inset:0; background:rgba(0,0,0,.85); display:none; place-items:center; padding:20px; z-index:2000}
+.lightbox.open{display:grid}
+.lightbox img{max-width:min(100%,1100px); max-height:85vh; border-radius:12px}
+
+/* Audio player + visualizer */
+.player{display:grid; grid-template-columns:1fr 220px; gap:12px; align-items:center}
+.player .track{display:flex; align-items:center; gap:12px}
+.player progress{width:100%}
+canvas#viz{width:100%; height:120px; border:1px solid var(--border); border-radius:12px; background:rgba(255,255,255,.02)}
+
+/* Back to top */
+.to-top{position:fixed; right:16px; bottom:16px; opacity:0; pointer-events:none; transition:.2s}
+.to-top.visible{opacity:1; pointer-events:auto}
+
+/* Reveal */
+.reveal{opacity:0; transform:translateY(12px); transition:opacity .6s ease, transform .6s ease}
+.reveal.visible{opacity:1; transform:none}
+
+@media (max-width: 900px){
+    .grid{grid-template-columns: repeat(2, 1fr)}
+    .player{grid-template-columns:1fr}
+}
+@media (max-width: 560px){
+    .grid{grid-template-columns: 1fr}
+}
+.footer-meta{
+color: var(--muted);
+border-top: 1px solid var(--border);
+padding-top: 18px;
+margin-top: 32px;
+}
+/* === Top Songs (YouTube) + Poll === */
+.videos.grid{
+  display:grid; grid-template-columns:repeat(2,1fr); gap:14px;
+}
+.video-card{ background:var(--card); border:1px solid var(--border); border-radius:var(--radius); box-shadow:var(--shadow); overflow:hidden }
+.video-card header{ padding:12px 14px; font-weight:600; border-bottom:1px solid var(--border) }
+.video-embed{ position:relative; width:100%; aspect-ratio:16/9; background:#000 }
+.video-embed iframe{ position:absolute; inset:0; width:100%; height:100%; border:0 }
+
+.poll.card{ display:grid; gap:12px }
+.poll .option{ display:flex; align-items:center; gap:10px; padding:10px 12px; border:1px solid var(--border); border-radius:12px; background:transparent; cursor:pointer }
+.poll .option input{ accent-color: var(--brand-2); }
+.poll .actions{ display:flex; gap:10px; align-items:center; flex-wrap:wrap }
+.poll .results{ margin-top:6px; display:grid; gap:8px }
+.bar{ height:10px; border-radius:999px; background:rgba(255,255,255,.08); border:1px solid var(--border); overflow:hidden }
+.fill{ height:100%; width:0% ; background:linear-gradient(90deg,var(--brand),var(--brand-2)) }
+.result-row{ display:grid; grid-template-columns:140px 1fr auto; gap:10px; align-items:center; font-size:14px; color:var(--muted) }
+
+@media (max-width: 900px){
+  .videos.grid{ grid-template-columns:1fr }
+  .result-row{ grid-template-columns:1fr; gap:6px }
+}
+
+.videos.grid{ display:grid; grid-template-columns:repeat(2,1fr); gap:14px; }
+.video-card{ background:var(--card); border:1px solid var(--border); border-radius:var(--radius); box-shadow:var(--shadow); overflow:hidden }
+.video-card header{ padding:12px 14px; font-weight:600; border-bottom:1px solid var(--border) }
+.video-embed{ position:relative; width:100%; aspect-ratio:16/9; background:#000 }
+.video-embed iframe{ position:absolute; inset:0; width:100%; height:100%; border:0 }
+

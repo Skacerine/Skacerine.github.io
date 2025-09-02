@@ -1,0 +1,88 @@
+/* styles.css - Challenge #1 (Skeleton) */
+body{
+    margin:0;
+}
+
+.container{
+    background-color:lightsteelblue;
+    /*width:800px;*/
+    max-width: 800px;
+    margin: 0px auto;
+    padding: auto;
+    
+}
+
+.site-header{
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    color:mediumvioletred;
+    text-align:center;
+}
+
+.about{
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    color:black;
+    text-align: left;
+    padding: 20px 50px;
+    line-height: 50px;
+    
+}
+.tagline{
+    font-style:italic;
+    color:black;
+    margin: 0px 12px 24px 12px;
+}
+
+.hero{
+    width:400px;
+    background-color:white;
+    
+    border:3px solid black;
+    border-radius:20px;
+    margin:auto;
+}
+
+#mascot-image{
+    display:block;
+    margin:auto;
+    width:350px;
+
+}
+
+.buy-tickets{
+    margin:auto;
+    border-radius:10px;
+    padding:15px;
+    background-color:green;
+    color:white;
+    box-shadow:0px 0px 10px 5px green;
+
+}
+
+.actions {
+    text-align: center;
+    margin: 12px 0 28px 0;
+}
+
+.make-donation{
+    margin:auto;
+    border-radius:10px;
+    padding:15px;
+    background-color:purple;
+    color:white;
+    box-shadow: 0px 0px 10px 5px purple;
+    
+}
+.buy-tickets:hover{
+    background-color: green;
+    cursor: pointer;
+    transform: translateY(-1px);
+}
+
+.make-donation:hover {
+    background-color: purple;
+    cursor: pointer;
+    transform: translateY(-1px);
+}
+.site-footer {
+    text-align: center;
+}
